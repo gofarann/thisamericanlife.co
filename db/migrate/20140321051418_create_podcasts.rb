@@ -3,7 +3,7 @@ class CreatePodcasts < ActiveRecord::Migration
     create_table :podcasts do |t|
       t.integer :number
       t.string :title
-      t.string :description
+      t.text :description
       t.date :date
     end
   end

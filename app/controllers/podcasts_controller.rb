@@ -1,5 +1,6 @@
 class PodcastsController < ApplicationController
   before_action :set_podcast, only: [:show, :edit, :update, :destroy]
+  
   require 'open-uri'
 
   # GET /podcasts
@@ -38,7 +39,8 @@ class PodcastsController < ApplicationController
       puts "Image: " + image
       puts "Number: " + number
       puts "Title: " + title
-      puts "Description: " + description
+      puts "Description: " + 
+      description
       puts "Date: " + date
       puts "MP3: " + mp3
       
@@ -101,7 +103,7 @@ class PodcastsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_podcast
-      @podcast = Podcast.find(params[:id])
+      @podcast = Podcast.find_by_number(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

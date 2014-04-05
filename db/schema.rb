@@ -13,10 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20140321051418) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "podcasts", force: true do |t|
     t.integer "number"
     t.string  "title"
-    t.string  "description"
+    t.text    "description"
     t.date    "date"
   end
 
