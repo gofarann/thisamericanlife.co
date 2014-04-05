@@ -1,9 +1,16 @@
 Thisamericanmp3::Application.routes.draw do
+  resources :podcasts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'podcasts#index'
+  
+  get 'import' => 'podcasts#import', as: :import
+  
+  get 'podcasts/:number' => 'podcasts#show', as: :number
+  get 'podcasts/:number/edit' => 'podcasts#edit', as: :edit_number
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
