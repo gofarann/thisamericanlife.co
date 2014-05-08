@@ -5,6 +5,7 @@ gem 'kaminari'
 gem 'nokogiri'
 gem 'aws-s3'
 gem 'puma'
+gem 'carrierwave-aws'
 
 group :production do
   gem 'rails_12factor'
