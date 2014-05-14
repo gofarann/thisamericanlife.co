@@ -1,12 +1,11 @@
-<h3><%= link_to "#{podcast.number}: #{podcast.title}", number_path(podcast.number) %></h3>
-<h4><%= podcast.date.strftime("%B %-d, %Y") %></h4>
-<p><%= podcast.description %></p>
-
-<img src="http://eliduke.s3.amazonaws.com/tam/images/<%= "%03d" % podcast.number %>.jpg">
-
-<audio src="http://eliduke.s3.amazonaws.com/tam/podcasts/<%= "%03d" % podcast.number %>.mp3" controls preload></audio>
-
-<ul class="list-inline">
-	<li><%= link_to 'Edit', edit_number_path(podcast.number) %></li>
-	<li><%= link_to 'Destroy', podcast, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-</ul>
+<div class="podcast row">
+	<div class="col-sm-6">
+		<h3><%= link_to "#{podcast.number}: #{podcast.title}", number_path(podcast.number) %></h3>
+		<h4><%= podcast.date.strftime("%B %-d, %Y") %></h4>
+		<p><%= podcast.description %></p>
+	</div>
+	<div class="col-sm-6">
+		<img src="http://eliduke.s3.amazonaws.com/tam/images/<%= "%03d" % podcast.number %>.jpg">
+		<audio src="http://eliduke.s3.amazonaws.com/tam/podcasts/<%= "%03d" % podcast.number %>.mp3" controls preload></audio>
+	</div>
+</div>

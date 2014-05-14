@@ -35,14 +35,15 @@ class PodcastsController < ApplicationController
       description = doc.css("div.description").text.strip
       date = Date.parse(doc.css("div.date").text).strftime("%F")
       mp3 = "http://podcast.thisamericanlife.org/podcast/#{this_week}.mp3"
+      
+      Podcast.create!(number: number.to_i, title: title, description: description, date: date)
 
-      puts "Image: " + image
-      puts "Number: " + number
-      puts "Title: " + title
-      puts "Description: " + 
-      description
-      puts "Date: " + date
-      puts "MP3: " + mp3
+      # puts "Image: " + image
+      # puts "Number: " + number
+      # puts "Title: " + title
+      # puts "Description: " + description
+      # puts "Date: " + date
+      # puts "MP3: " + mp3
       
       redirect_to root_path
 
