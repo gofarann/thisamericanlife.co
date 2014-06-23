@@ -7,5 +7,6 @@
 	<div class="col-sm-6">
 		<img src="http://eliduke.s3.amazonaws.com/tam/images/<%= "%03d" % podcast.number %>.jpg">
 		<audio src="http://eliduke.s3.amazonaws.com/tam/podcasts/<%= "%03d" % podcast.number %>.mp3" controls preload></audio>
+		<h5 class="text-center"><%= link_to "Click here to download MP3", "http://eliduke.s3.amazonaws.com/tam/podcasts/#{'%03d' % podcast.number}.mp3" %></h5>
 	</div>
 </div>
