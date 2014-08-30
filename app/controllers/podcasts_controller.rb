@@ -6,7 +6,7 @@ class PodcastsController < ApplicationController
   # GET /podcasts
   # GET /podcasts.json
   def index
-    @podcasts = Podcast.order("number DESC").page params[:page]
+    @podcasts = Podcast.order("number DESC").page params[:page]    
   end
 
   # GET /podcasts/1
@@ -15,13 +15,21 @@ class PodcastsController < ApplicationController
   end
 
   def import
-
-    doc = Nokogiri::HTML(open('http://thisamericanlife.org')).css('div.this-week').css('div.content')
-
-    newest = doc.css("h3").text.split(":").first.strip.to_i
+    
+    doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives")).css("div#content").css("div#archive-episodes")
+    newest_number = doc.css("li.first").css("h3").css("a").attribute("href").text.split("/")[3]
+    raw_date = doc.css("li.first").css("h3").css("span.date").text.split(".")
+    newest_date = Date.parse("#{raw_date[2]}-#{raw_date[0]}-#{raw_date[1]}")
+    
+    if newest_date > Date.today
+      #PROMO
+      newest = newest_number.to_i - 1
+    else
+      newest = newest_number.to_i
+    end
     
     last = Podcast.last.number
-
+        
     if newest > last
       
       episode = last + 1
