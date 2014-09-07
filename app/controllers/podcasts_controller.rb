@@ -2,7 +2,7 @@ class PodcastsController < ApplicationController
   before_action :set_podcast, only: [:show, :edit, :update, :destroy]
   
   require 'open-uri'
-
+  
   # GET /podcasts
   # GET /podcasts.json
   def index
@@ -13,9 +13,51 @@ class PodcastsController < ApplicationController
   # GET /podcasts/1.json
   def show
   end
+  
+  class LocalResource
+
+    attr_reader :uri
+
+    def initialize(uri)
+      @uri = uri
+    end
+
+    def file
+      @file ||= Tempfile.new(tmp_filename, tmp_folder, encoding: encoding).tap do |f|
+        io.rewind
+        f.write(io.read)
+        f.close
+      end
+    end
+
+    def io
+      @io ||= uri.open
+    end
+
+    def encoding
+      io.rewind
+      io.read.encoding
+    end
+
+    def tmp_filename
+      [
+        Pathname.new(uri.path).basename,
+        Pathname.new(uri.path).extname
+      ]
+    end
+
+    def tmp_folder
+      Rails.root.join('tmp')
+    end
+
+  end
+  
+  def local_resource_from_url(url)
+    LocalResource.new(URI.parse(url))
+  end
 
   def import
-    
+                
     doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives")).css("div#content").css("div#archive-episodes")
     newest_number = doc.css("li.first").css("h3").css("a").attribute("href").text.split("/")[3]
     raw_date = doc.css("li.first").css("h3").css("span.date").text.split(".")
@@ -37,16 +79,38 @@ class PodcastsController < ApplicationController
       while episode <= newest
             
         doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives/episode/#{episode}")).css("div#content")
-
+    
         number = doc.css("h1.node-title").text.split(":").first.to_i
         title = doc.css("h1.node-title").text.split(":").last.strip
         description = doc.css("div.description").text.strip
         date = Date.parse(doc.css("div.date").text).strftime("%F")
-
+    
         Podcast.create!(number: number, title: title, description: description, date: date)
+    
+        image = doc.css("div.image img").attribute('src')
+        podcast = "http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/#{episode}.mp3"
 
-        # image = doc.css("div.image img").attribute('src')
-        # mp3 = "http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/#{episode}.mp3"
+        begin
+          local_podcast = local_resource_from_url(podcast)
+          local_copy_of_podcast = local_podcast.file
+
+          local_image = local_resource_from_url(image)
+          local_copy_of_image = local_image.file
+
+          s3 = AWS::S3.new
+          
+          podcast_key = "podcasts/#{episode}.mp3"
+          s3.buckets["talarchive"].objects[podcast_key].write(:file => "#{local_copy_of_podcast.path}", :acl => :public_read)
+
+          image_key = "images/#{episode}.jpg"
+          s3.buckets["talarchive"].objects[image_key].write(:file => "#{local_copy_of_image.path}", :acl => :public_read)
+
+        ensure
+          local_copy_of_podcast.close
+          local_copy_of_podcast.unlink
+          local_copy_of_image.close
+          local_copy_of_image.unlink
+        end
       
         episode += 1
         
