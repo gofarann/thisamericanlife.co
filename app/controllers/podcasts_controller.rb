@@ -64,7 +64,6 @@ class PodcastsController < ApplicationController
     newest_date = Date.parse("#{raw_date[2]}-#{raw_date[0]}-#{raw_date[1]}")
     
     if newest_date > Date.today
-      #PROMO
       newest = newest_number.to_i - 1
     else
       newest = newest_number.to_i
@@ -100,11 +99,10 @@ class PodcastsController < ApplicationController
           s3 = AWS::S3.new
           
           podcast_key = "podcasts/#{episode}.mp3"
-          s3.buckets["talarchive"].objects[podcast_key].write(:file => "#{local_copy_of_podcast.path}", :acl => :public_read)
+          s3.buckets["#{ENV['S3_BUCKET_NAME']}"].objects[podcast_key].write(:file => "#{local_copy_of_podcast.path}", :acl => :public_read)
 
           image_key = "images/#{episode}.jpg"
-          s3.buckets["talarchive"].objects[image_key].write(:file => "#{local_copy_of_image.path}", :acl => :public_read)
-
+          s3.buckets["#{ENV['S3_BUCKET_NAME']}"].objects[image_key].write(:file => "#{local_copy_of_image.path}", :acl => :public_read)
         ensure
           local_copy_of_podcast.close
           local_copy_of_podcast.unlink
