@@ -3,7 +3,7 @@ ruby '2.1.2'
 
 gem 'kaminari'
 gem 'nokogiri'
-gem 'aws-s3'
+gem 'aws-sdk'
 gem 'puma'
 
 group :production do
