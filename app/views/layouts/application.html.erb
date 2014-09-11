@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	  <title><%= "#{@podcast.number}: #{@podcast.title} | " if @podcast %>This American Life</title>
 	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<link href="http://code.jquery.com/ui/1.11.0/jquery-ui.js" rel="javascript">
 	  <%= csrf_meta_tags %>
 	  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,12 +16,30 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-44211034-4', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+		
 	</head>
 	<body>
 		<div class="container">
 			<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 				<div class="row">
 					<h1><a href="/"><span class="blue">THIS</span> <span class="red">AMERICAN</span> <span class="blue">LIFE</span></a></h1>
+
+					<% if new_episodes? %>
+			      <%= link_to "IMPORT NEW EPISODES", import_path, class: "btn btn-lg btn-primary btn-block" %>
+			    <% end %>
+			
+					<%= bootstrap_flash %>
+			    
 					<%= yield %>
 				</div>
 			</div>

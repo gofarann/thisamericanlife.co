@@ -58,24 +58,11 @@ class PodcastsController < ApplicationController
 
   def import
 
-    doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives")).css("div#content").css("div#archive-episodes")
-    newest_number = doc.css("li.first").css("h3").css("a").attribute("href").text.split("/")[3]
-    raw_date = doc.css("li.first").css("h3").css("span.date").text.split(".")
-    newest_date = Date.parse("#{raw_date[2]}-#{raw_date[0]}-#{raw_date[1]}")
+    if new_episodes?
+      
+      episode = Podcast.order(:number).last.number + 1
 
-    if newest_date > Date.today
-      newest = newest_number.to_i - 1
-    else
-      newest = newest_number.to_i
-    end
-
-    last = Podcast.last.number
-
-    if newest > last
-
-      episode = last + 1
-
-      while episode <= newest
+      while episode <= newest_episode
 
         doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives/episode/#{episode}")).css("div#content")
 
@@ -88,16 +75,17 @@ class PodcastsController < ApplicationController
 
         image = doc.css("div.image img").attribute('src')
         podcast = "http://audio.thisamericanlife.org/jomamashouse/ismymamashouse/#{episode}.mp3"
-
+        
         begin
           local_podcast = local_resource_from_url(podcast)
           local_copy_of_podcast = local_podcast.file
-
+        
           local_image = local_resource_from_url(image)
           local_copy_of_image = local_image.file
-
+        
           s3 = AWS::S3.new
           bucket = s3.buckets["#{ENV['S3_BUCKET_NAME']}"]
+          
           bucket.objects["podcasts/#{episode}.mp3"].write(:file => local_copy_of_podcast.path, :acl => :public_read)
           bucket.objects["images/#{episode}.jpg"].write(:file => local_copy_of_image.path, :acl => :public_read)
         ensure
@@ -110,9 +98,9 @@ class PodcastsController < ApplicationController
         episode += 1
 
       end
-      redirect_to root_path
+      redirect_to root_path, notice: "New Episodes Imported! :)"
     else
-      redirect_to root_path
+      redirect_to root_path, notice: "No New Episodes. :("
     end
 
   end
