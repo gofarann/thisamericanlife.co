@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       newest_number.to_i - 1
     else
       newest_number.to_i
-    end    
+    end   
   end
   
   def new_episodes?
