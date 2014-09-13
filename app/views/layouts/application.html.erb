@@ -34,9 +34,9 @@
 				<div class="row">
 					<h1><a href="/"><span class="blue">THIS</span> <span class="red">AMERICAN</span> <span class="blue">LIFE</span></a></h1>
 
-					<%# if new_episodes? %>
-			      <%#= link_to "IMPORT NEW EPISODES", import_path, class: "btn btn-lg btn-primary btn-block" %>
-			    <%# end %>
+					<% if new_episodes? %>
+			      <%= link_to "IMPORT NEW EPISODES", import_path, class: "btn btn-lg btn-primary btn-block" %>
+			    <% end %>
 			
 					<%= bootstrap_flash %>
 			    
