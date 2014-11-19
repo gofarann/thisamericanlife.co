@@ -1,7 +1,3 @@
-// Place all the styles related to the Podcasts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 h1 {
 	font-size: 200%;
 	text-align: center;
@@ -65,7 +61,7 @@ audio {
 	h1 {
 		font-size: 450%;
 	}
-	
+
 	.podcast p {
 		font-size: 130%;
 		line-height: 1.4;
