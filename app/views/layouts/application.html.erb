@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
 	  <title><%= "#{@podcast.number}: #{@podcast.title} | " if @podcast %>This American Life</title>
+
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="/css/app.css" type="text/css">
-		<link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
-		<link rel="javascript" href="http://code.jquery.com/ui/1.11.0/jquery-ui.js">
+
 	  <%= csrf_meta_tags %>
 	  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,8 +39,6 @@
 					<% if new_episode? %>
 			      <%= link_to "IMPORT NEW EPISODE!", import_path, class: "btn btn-lg btn-primary btn-block" %>
 			    <% end %>
-
-					<%= bootstrap_flash %>
 
 					<%= yield %>
 				</div>
