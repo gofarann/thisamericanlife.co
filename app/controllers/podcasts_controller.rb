@@ -78,8 +78,13 @@ class PodcastsController < ApplicationController
         s3 = AWS::S3.new
         bucket = s3.buckets["#{ENV['S3_BUCKET_NAME']}"]
 
-        bucket.objects["podcasts/#{episode}.mp3"].write(:file => local_copy_of_podcast.path, :acl => :public_read)
-        bucket.objects["images/#{episode}.jpg"].write(:file => local_copy_of_image.path, :acl => :public_read)
+        if !bucket.objects["podcasts/#{episode}.mp3"].exists?
+          bucket.objects["podcasts/#{episode}.mp3"].write(:file => local_copy_of_podcast.path, :acl => :public_read)
+        end
+
+        if !bucket.objects["images/#{episode}.jpg"].exists?
+          bucket.objects["images/#{episode}.jpg"].write(:file => local_copy_of_image.path, :acl => :public_read)
+        end
 
       ensure
         local_copy_of_podcast.close
