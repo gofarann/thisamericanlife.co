@@ -1,4 +1,4 @@
-Thisamericanmp3::Application.configure do
+Thisamericanlife::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

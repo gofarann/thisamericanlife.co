@@ -1,4 +1,10 @@
-Thisamericanmp3::Application.routes.draw do
+Thisamericanlife::Application.routes.draw do
+
+  constraints :subdomain => "api" do
+    scope :module => "api", :as => "api" do
+     resources :podcasts
+    end
+  end
 
   root 'podcasts#index'
 

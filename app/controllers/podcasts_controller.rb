@@ -107,6 +107,8 @@ class PodcastsController < ApplicationController
 
     def set_podcast
       @podcast = Podcast.find_by_number(params[:id])
+      @podcast.image = "http://#{ENV['S3_BUCKET_NAME']}/images/#{"%03d" % @podcast.number}.jpg"
+      @podcast.podcast = "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{"%03d" % @podcast.number}.mp3"
     end
 
     def podcast_params

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Thisamericanmp3::Application.config.secret_key_base = 'cd0571a5ccd434e5c63397b2e16cf13000e2efc3db69b1970e318d4b030b9cacf59d3ce8b5a80db039569706c274fe80192af9f3f4023c78d8b95caf6edeb1cd'
+Thisamericanlife::Application.config.secret_key_base = 'cd0571a5ccd434e5c63397b2e16cf13000e2efc3db69b1970e318d4b030b9cacf59d3ce8b5a80db039569706c274fe80192af9f3f4023c78d8b95caf6edeb1cd'

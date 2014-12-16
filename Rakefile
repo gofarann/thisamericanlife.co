@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Thisamericanmp3::Application.load_tasks
+Thisamericanlife::Application.load_tasks
