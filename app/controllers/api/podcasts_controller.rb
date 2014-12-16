@@ -6,7 +6,7 @@ class Api::PodcastsController < ApplicationController
   end
 
   def show
-    render json: @podcast.to_json(methods: [:image, :podcast])
+    render json: @podcast.to_json(methods: [:image, :podcast], except: [:id])
   end
 
   private
