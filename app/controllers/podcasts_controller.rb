@@ -11,7 +11,7 @@ class PodcastsController < ApplicationController
   end
 
   def seed
-    @podcasts = Podcast.order(:number).limit(100)
+    @podcasts = Podcast.order(:number).last(100)
     render layout: false
   end
 
