@@ -12,10 +12,6 @@ class ApplicationController < ActionController::Base
     this_week > last ? true : false
   end
 
-  def hostname
-    ENV['RAILS_ENV'] == "production" ? "#{request.host}" : "#{request.host_with_port}"
-  end
-
-  helper_method :new_episode?, :this_week, :hostname
+  helper_method :new_episode?, :this_week
 
 end

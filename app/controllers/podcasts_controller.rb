@@ -6,11 +6,11 @@ class PodcastsController < ApplicationController
 
   def index
     # @podcasts = Podcast.order("number DESC").page params[:page]
-    @podcasts = HTTParty.get("http://api.#{hostname}")
+    @podcasts = HTTParty.get("http://api.thisamericanlife.co")
   end
 
   def show
-    @podcast = HTTParty.get("http://api.#{hostname}/#{params[:id]}")
+    @podcast = HTTParty.get("http://api.thisamericanlife.co/#{params[:id]}")
   end
 
   def seed
