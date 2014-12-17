@@ -10,6 +10,11 @@ class PodcastsController < ApplicationController
   def show
   end
 
+  def seed
+    @podcasts = Podcast.order(:number).limit(100)
+    render layout: false
+  end
+
   class LocalResource
 
     attr_reader :uri

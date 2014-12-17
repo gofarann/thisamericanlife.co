@@ -2,7 +2,8 @@ class Api::PodcastsController < ApplicationController
   before_action :set_podcast, only: [:show]
 
   def index
-    @podcasts = Podcast.order("number DESC").page params[:page]
+    podcasts = Podcast.order("number DESC").limit(10)
+    render json: podcasts
   end
 
   def show
