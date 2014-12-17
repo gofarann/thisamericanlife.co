@@ -2,16 +2,19 @@ class PodcastsController < ApplicationController
   before_action :set_podcast, only: [:show, :edit, :update, :destroy]
 
   require 'open-uri'
+  require 'httparty'
 
   def index
-    @podcasts = Podcast.order("number DESC").page params[:page]
+    # @podcasts = Podcast.order("number DESC").page params[:page]
+    @podcasts = HTTParty.get("http://api.#{hostname}")
   end
 
   def show
+    @podcast = HTTParty.get("http://api.#{hostname}/#{params[:id]}")
   end
 
   def seed
-    @podcasts = Podcast.order(:number).last(100)
+    @podcasts = Podcast.order(:number).last(50)
     render layout: false
   end
 

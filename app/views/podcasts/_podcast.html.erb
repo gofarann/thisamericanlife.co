@@ -1,12 +1,12 @@
 <div class="podcast row">
 	<div class="col-sm-6">
-		<h3><%= link_to "#{podcast.number}: #{podcast.title}", number_path(podcast.number) %></h3>
-		<h4><%= podcast.date.strftime("%B %-d, %Y") %></h4>
-		<p><%= podcast.description %></p>
+		<h3><%= link_to "#{podcast['number']}: #{podcast['title']}", number_path(podcast['number']) %></h3>
+		<h4><%= Date.parse(podcast['date']).strftime("%B %-d, %Y") %></h4>
+		<p><%= podcast['description'] %></p>
 	</div>
 	<div class="col-sm-6">
-		<img src="<%= podcast.image %>">
-		<audio src="<%= podcast.podcast %>" controls preload></audio>
-		<h5 class="text-center"><%= link_to "Click here for the MP3", "#{podcast.podcast}" %></h5>
+		<img src="<%= podcast['image'] %>">
+		<audio src="<%= podcast['podcast'] %>" controls preload></audio>
+		<h5 class="text-center"><%= link_to "Click here for the MP3", "#{podcast['podcast']}" %></h5>
 	</div>
 </div>

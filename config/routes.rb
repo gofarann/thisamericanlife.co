@@ -2,7 +2,8 @@ Thisamericanlife::Application.routes.draw do
 
   constraints :subdomain => "api" do
     scope :module => "api", :as => "api" do
-      get '/:id' => 'podcasts#show', as: :number
+      get '/' => 'podcasts#index'
+      get '/:id' => 'podcasts#show'
     end
   end
 
@@ -13,6 +14,5 @@ Thisamericanlife::Application.routes.draw do
   get '/import' => 'podcasts#import', as: :import
   get '/seed' => 'podcasts#seed', as: :seed
   get '/:id' => 'podcasts#show', as: :number
-
 
 end
