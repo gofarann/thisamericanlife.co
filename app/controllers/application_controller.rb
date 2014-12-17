@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def hostname
-    Rails.env == "production" ? "#{request.host}" : "#{request.host_with_port}"
+    ENV['RAILS_ENV'] == "production" ? "#{request.host}" : "#{request.host_with_port}"
   end
 
   helper_method :new_episode?, :this_week, :hostname
