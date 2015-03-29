@@ -9,7 +9,7 @@
 	</div>
 	<div class="col-sm-6">
 		<img src="http://<%= ENV['S3_BUCKET_NAME'] %>/images/<%= "%03d" % podcast.number%>.jpg">
-    <audio src="http://<%= ENV['S3_BUCKET_NAME'] %>/podcasts/<%= "%03d" % podcast.number %>.jpg" controls preload></audio>
+    <audio src="http://<%= ENV['S3_BUCKET_NAME'] %>/podcasts/<%= "%03d" % podcast.number %>.mp3" controls preload></audio>
     <%= link_to "CLICK HERE FOR MP3", "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{'%03d' % podcast.number}.mp3", class: "btn btn-sm btn-danger btn-block" %>
 	</div>
 </div>
