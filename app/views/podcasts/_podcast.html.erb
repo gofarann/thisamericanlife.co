@@ -9,6 +9,6 @@
 	</div>
 	<div class="col-sm-6">
 		<img src="http://<%= ENV['S3_BUCKET_NAME'] %>/images/<%= "%03d" % podcast.number%>.jpg">
-    <h5 class="text-center"><%= link_to "Click here for the MP3", "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{'%03d' % podcast.number}.mp3" %></h5>
+    <%= link_to "CLICK HERE FOR MP3", "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{'%03d' % podcast.number}.mp3", class: "btn btn-xs btn-danger btn-block" %>
 	</div>
 </div>
