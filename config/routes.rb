@@ -2,8 +2,9 @@ Thisamericanlife::Application.routes.draw do
 
   constraints :subdomain => "api" do
     scope :module => "api" do
-      get '/' => 'podcasts#index'
+      get '/random' => 'podcasts#random'
       get '/:id' => 'podcasts#show'
+      get '/' => 'podcasts#index'
     end
   end
 
@@ -11,7 +12,6 @@ Thisamericanlife::Application.routes.draw do
 
   resources :podcasts
 
-  get '/random' => 'podcasts#random', as: :random
   get '/import' => 'podcasts#import', as: :import
   get '/seed' => 'podcasts#seed', as: :seed
   get '/:id' => 'podcasts#show', as: :number

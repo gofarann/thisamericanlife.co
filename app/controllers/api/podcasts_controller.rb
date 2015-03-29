@@ -1,5 +1,4 @@
 class API::PodcastsController < ApplicationController
-  before_action :set_podcast, only: [:show]
 
   def index
     page = params[:page].nil? ? 1 : params[:page].to_i
@@ -15,13 +14,14 @@ class API::PodcastsController < ApplicationController
   end
 
   def show
+    @podcast = Podcast.find_by(number: params[:id])
     render json: @podcast
   end
 
-  private
-
-  def set_podcast
-    @podcast = Podcast.find_by_number(params[:id])
+  def random
+    podcast = rand(1..Podcast.last.number)
+    @podcast = Podcast.find_by(number: podcast)
+    render json: @podcast
   end
 
 end
