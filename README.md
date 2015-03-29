@@ -27,3 +27,11 @@ http://api.thisamericanlife.co/random
 ```
 
 Enjoy!
+
+### Up and Coming
+
+I have future plans to implement the follow, in no particular order:
+
+* Full coverage RSpec
+* Elasticsearch
+* Better audio player
