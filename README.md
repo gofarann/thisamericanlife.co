@@ -40,7 +40,7 @@ http://api.thisamericanlife.co?page=21
     }
 ```
 
-... You get the idea.
+&hellip; you get the idea.
 
 http://api.thisamericanlife.co/547 <br />
 http://api.thisamericanlife.co/random
@@ -62,7 +62,7 @@ Enjoy! And, if you do end up using this API for any reason at all, please let me
 
 ### Up and Coming
 
-I have future plans to implement the follow, in no particular order:
+I have future plans to implement the following, in no particular order:
 
 * Full coverage RSpec
 * Elasticsearch
