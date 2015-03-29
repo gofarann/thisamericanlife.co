@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
+ruby '2.2.0'
 
 gem 'rails'
 gem 'kaminari'
@@ -10,5 +10,5 @@ gem 'puma'
 gem 'pg'
 gem 'turbolinks'
 gem 'httparty'
-gem 'jbuilder'
 gem 'rails_12factor'
+gem 'active_model_serializers', '~> 0.8.3'

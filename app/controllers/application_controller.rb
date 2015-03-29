@@ -7,9 +7,16 @@ class ApplicationController < ActionController::Base
     Nokogiri::HTML(open("http://www.thisamericanlife.org")).css("div#content").css("div.block-content").css("div.this-week").css("h3").css("a").attribute("href").text.split("/")[3].to_i
   end
 
+  def new_podcast_exists?
+    response = HTTParty.get("http://assets.thisamericanlife.co/podcasts/#{this_week}.mp3")
+    response.code == 200
+  end
+
   def new_episode?
     last = Podcast.last.number
-    this_week > last ? true : false
+    return false unless this_week > last
+    return false unless new_podcast_exists?
+    return true
   end
 
   helper_method :new_episode?, :this_week

@@ -5,12 +5,10 @@ class PodcastsController < ApplicationController
   require 'httparty'
 
   def index
-    # @podcasts = Podcast.order("number DESC").page params[:page]
-    @podcasts = HTTParty.get("http://api.thisamericanlife.co")
+    @podcasts = Podcast.order("number DESC").page params[:page]
   end
 
   def show
-    @podcast = HTTParty.get("http://api.thisamericanlife.co/#{params[:id]}")
   end
 
   def seed
@@ -75,6 +73,8 @@ class PodcastsController < ApplicationController
 
       image = doc.css("div.image img").attribute('src')
       podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
+
+      # http://assets.thisamericanlife.co/podcasts/551.mp3
 
       begin
         local_podcast = local_resource_from_url(podcast)

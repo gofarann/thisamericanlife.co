@@ -1,2 +1,3 @@
-<%= render partial: "podcast", :collection => @podcasts %>
-
+<%= render @podcasts %>
+<%= paginate @podcasts %>
+<%= link_to "RANDOM EPISODE", "#{rand(1...(Podcast.all.size - 10))}?random=true", class: "btn btn-lg btn-info btn-block" %>
