@@ -6,7 +6,7 @@ http://thisamericanlife.co
 
 # api.thisamericanlife.co
 
-Just for funzies, I decided to create a *This American Life* public API. It's very simple. At the root it will return the 10 most recently episodes. Given a page number it will return the 10 episodes on that page. Given a specific episode number and it will return just that episode. It can also return a random episode for your listening pleasure.
+Just for funzies I decided to create a *This American Life* public API. It's very simple. At the root it will return the 10 most recently episodes. Given a page number it will return the 10 episodes on that page. Given a specific episode number and it will return just that episode. It can also return a random episode for your listening pleasure.
 
 http://api.thisamericanlife.co <br />
 http://api.thisamericanlife.co?page=21
@@ -38,8 +38,9 @@ http://api.thisamericanlife.co?page=21
       "image_url": "http://assets.thisamericanlife.co/images/349.jpg",
       "podcast_url": "http://assets.thisamericanlife.co/podcasts/349.mp3"
     }
-    &hellip;
 ```
+
+... You get the idea.
 
 http://api.thisamericanlife.co/547 <br />
 http://api.thisamericanlife.co/random
@@ -57,7 +58,7 @@ http://api.thisamericanlife.co/random
 }
 ```
 
-Enjoy!
+Enjoy! And, if you do end up using this API for any reason at all, please let me know.
 
 ### Up and Coming
 
