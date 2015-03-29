@@ -1,5 +1,5 @@
 h1 {
-	font-size: 200%;
+	font-size: 190%;
 	text-align: center;
 	font-weight: bold;
 	margin-bottom: 30px;
@@ -17,6 +17,10 @@ h3 {
 
 h4 {
 	color: #442A56;
+}
+
+p {
+  font-size: 115%;
 }
 
 a {

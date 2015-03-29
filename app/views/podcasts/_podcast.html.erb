@@ -1,5 +1,5 @@
 <% if params[:random] %>
-  <%= link_to "NOT THIS ONE", "#{rand(1..Podcast.last.number)}?random=true", class: "btn btn-lg btn-primary btn-block" %>
+  <%= link_to "RANDOM EPISODE", "#{rand(1..Podcast.last.number)}?random=true", class: "btn btn-primary btn-block" %>
 <% end %>
 <div class="podcast row">
 	<div class="col-sm-6">
@@ -10,6 +10,6 @@
 	<div class="col-sm-6">
 		<img src="http://<%= ENV['S3_BUCKET_NAME'] %>/images/<%= "%03d" % podcast.number%>.jpg">
     <audio src="http://<%= ENV['S3_BUCKET_NAME'] %>/podcasts/<%= "%03d" % podcast.number %>.mp3" controls preload></audio>
-    <%= link_to "CLICK HERE FOR MP3", "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{'%03d' % podcast.number}.mp3", class: "btn btn-sm btn-danger btn-block" %>
+    <%= link_to "CLICK HERE FOR THE MP3", "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{'%03d' % podcast.number}.mp3", class: "btn btn-danger btn-block" %>
 	</div>
 </div>
