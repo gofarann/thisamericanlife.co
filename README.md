@@ -8,9 +8,9 @@ http://thisamericanlife.co
 
 Just for funzies, I decided to create a *This American Life* public API. It's very simple. At the root it will return the 10 most recently episodes. Given a page number it will return the 10 episodes on that page. Given a specific episode number and it will return just that episode. It can also return a random episode for your listening pleasure.
 
-http://api.thisamericanlife.co
-http://api.thisamericanlife.co?page=32
-http://api.thisamericanlife.co/547
+http://api.thisamericanlife.co <br />
+http://api.thisamericanlife.co?page=32 <br />
+http://api.thisamericanlife.co/547 <br />
 http://api.thisamericanlife.co/random
 
 ```json
