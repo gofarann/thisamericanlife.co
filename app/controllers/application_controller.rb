@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def new_podcast_exists?
-    response = HTTParty.get("http://assets.thisamericanlife.co/podcasts/#{this_week}.mp3")
+    response = HTTParty.get("http://podcast.thisamericanlife.org/podcast/#{episode}.mp3")
     response.code == 200
   end
 
