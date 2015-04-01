@@ -1,0 +1,9 @@
+<% if page.current? %>
+  <li class='active kaminari-page'>
+    <%= content_tag :a, page, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)) %>
+  </li>
+<% else %>
+  <li class='kaminari-page'>
+    <%= link_to page, url, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)) %>
+  </li>
+<% end %>

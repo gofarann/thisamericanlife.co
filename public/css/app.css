@@ -56,6 +56,10 @@ audio {
 	margin-bottom: 30px;
 }
 
+.podcast:last-of-type {
+	margin-bottom: 0;
+}
+
 .blue {
 	color: #442A56;
 }
@@ -64,7 +68,13 @@ audio {
 	color: #E93E2F;
 }
 
+ul.pagination {
+  margin: 0 0 20px 0;
+}
+
 @media (max-width: 767px) {
+  ul.pagination li.kaminari-page { display: none }
+  ul.pagination li.kaminari-gap { display: none }
 }
 
 @media (min-width: 768px) {
