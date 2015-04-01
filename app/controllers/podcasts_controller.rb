@@ -8,6 +8,9 @@ class PodcastsController < ApplicationController
   def show
   end
 
+  def api
+  end
+
   def seed
     @podcasts = Podcast.order(:number).last(50)
     render layout: false
