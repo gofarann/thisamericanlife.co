@@ -1,3 +1,3 @@
 <%= render @podcasts %>
 <%= paginate @podcasts %>
-<%= link_to "CLICK HERE FOR RANDOM EPISODE", "#{rand(1...(Podcast.last.number - 10))}?random=true", class: "btn btn-primary btn-block" %>
+<%= link_to "RANDOM EPISODE GENERATOR", "#{rand(1...(Podcast.last.number - 10))}?random=true", class: "btn btn-primary btn-block" %>
