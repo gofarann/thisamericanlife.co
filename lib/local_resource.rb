@@ -25,12 +25,13 @@ class LocalResource
 
   def tmp_filename
     [
-      Pathname.new(uri.path).basename,
-      Pathname.new(uri.path).extname
+      uri.path.split("/").last.split(".").first,
+      uri.path.split("/").last.split(".").last.insert(0, ".")
     ]
   end
 
   def tmp_folder
     Rails.root.join('tmp')
   end
+
 end

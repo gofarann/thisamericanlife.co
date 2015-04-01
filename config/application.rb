@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 require 'pry'
+require 'open-uri'
+require 'httparty'
 
 # Pick the frameworks you want:
 require "active_record/railtie"

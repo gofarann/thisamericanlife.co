@@ -1,9 +1,6 @@
 class PodcastsController < ApplicationController
   before_action :set_podcast, only: [:show, :edit, :update, :destroy]
 
-  require 'open-uri'
-  require 'httparty'
-
   def index
     @podcasts = Podcast.order("number DESC").page params[:page]
   end
@@ -33,10 +30,8 @@ class PodcastsController < ApplicationController
       description = doc.css("div.description").text.strip
       date = Date.parse(doc.css("div.date").text).strftime("%F")
 
-      image = doc.css("div.image img").attribute('src')
+      image = doc.css("div.image img").attribute('src').value.insert(0, "http:")
       podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
-
-      # http://assets.thisamericanlife.co/podcasts/551.mp3
 
       begin
         local_podcast = local_resource_from_url(podcast)
@@ -55,7 +50,6 @@ class PodcastsController < ApplicationController
         if !bucket.objects["images/#{episode}.jpg"].exists?
           bucket.objects["images/#{episode}.jpg"].write(:file => local_copy_of_image.path, :acl => :public_read)
         end
-
       ensure
         local_copy_of_podcast.close
         local_copy_of_podcast.unlink
