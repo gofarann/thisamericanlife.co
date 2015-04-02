@@ -67,5 +67,5 @@ I have future plans to implement the following, in no particular order:
 * Full coverage RSpec
 * Elasticsearch
 * Better audio player
-* Slugginate URLS
+* ~~Slugginate URLS~~
 * Bulk Download Interface

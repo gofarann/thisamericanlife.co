@@ -44,8 +44,24 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    elasticsearch (1.0.8)
+      elasticsearch-api (= 1.0.7)
+      elasticsearch-transport (= 1.0.7)
+    elasticsearch-api (1.0.7)
+      multi_json
+    elasticsearch-model (0.1.6)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.6)
+    elasticsearch-transport (1.0.7)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.2.2)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    hashie (3.4.1)
     hike (1.2.3)
     httparty (0.13.3)
       json (~> 1.8)
@@ -63,6 +79,7 @@ GEM
     minitest (5.4.3)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     pg (0.17.1)
@@ -120,6 +137,8 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.3)
   aws-sdk
+  elasticsearch-model
+  elasticsearch-rails
   httparty
   kaminari
   nokogiri

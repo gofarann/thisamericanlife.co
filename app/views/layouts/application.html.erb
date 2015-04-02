@@ -40,6 +40,10 @@
 			      <%= link_to "IMPORT NEW EPISODE!", import_path, class: "btn btn-primary btn-block" %>
 			    <% end %>
 
+          <form action="<%= search_path %>" method="get">
+            <%= text_field_tag :q, params[:q], class: 'form-control input-lg', placeholder: "search: type and then hit enter" %>
+          </form>
+
 					<%= yield %>
 
           <div id="footer">

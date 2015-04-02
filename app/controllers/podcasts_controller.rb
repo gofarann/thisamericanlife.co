@@ -10,6 +10,11 @@ class PodcastsController < ApplicationController
     @random_podcast = Podcast.find(rand(1..Podcast.last.number))
   end
 
+  def search
+    response = Podcast.search(params[:q])
+    @podcasts = response.records.order(:title).to_a
+  end
+
   def api
   end
 
