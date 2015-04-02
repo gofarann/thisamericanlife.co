@@ -15,6 +15,6 @@ Thisamericanlife::Application.routes.draw do
   get '/import' => 'podcasts#import', as: :import
   get '/seed' => 'podcasts#seed', as: :seed
   get '/api' => 'podcasts#api', as: :api
-  get '/:id' => 'podcasts#show', as: :number
+  get '/:id' => 'podcasts#show', as: :title
 
 end

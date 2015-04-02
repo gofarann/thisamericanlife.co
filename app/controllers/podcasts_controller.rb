@@ -3,9 +3,11 @@ class PodcastsController < ApplicationController
 
   def index
     @podcasts = Podcast.order("number DESC").page params[:page]
+    @random_podcast = Podcast.find(rand(1..Podcast.last.number))
   end
 
   def show
+    @random_podcast = Podcast.find(rand(1..Podcast.last.number))
   end
 
   def api
