@@ -10,34 +10,36 @@ Just for funzies I also decided to create a **This American Life** public API. I
 
 #### [api.thisamericanlife.co](http://api.thisamericanlife.co)
 #### [api.thisamericanlife.co?page=21](http://api.thisamericanlife.co?page=21)
+#### [api.thisamericanlife.co/q?q=money](http://api.thisamericanlife.co/q?q=money)
 
 ```json
 {
   "podcasts": [
     {
-      "number": 351,
-      "title": "Return to Childhood 2008",
-      "description": "Seventh-grader Kayla Hernandez likes to reminisce&hellip;",
-      "date": "2008-03-07",
-      "image_url": "http://assets.thisamericanlife.co/images/351.jpg",
-      "podcast_url": "http://assets.thisamericanlife.co/podcasts/351.mp3"
+      "number": 366,
+      "title": "A Better Mousetrap 2008",
+      "description": "Stories about people trying to find new solutions to age-old...",
+      "date": "2008-10-10",
+      "image_url": "http://assets.thisamericanlife.co/images/366.jpg",
+      "podcast_url": "http://assets.thisamericanlife.co/podcasts/366.mp3"
     },
     {
-      "number": 350,
-      "title": "Human Resources",
-      "description": "The true story of little-known rooms in the New York City&hellip;",
-      "date": "2008-02-29",
-      "image_url": "http://assets.thisamericanlife.co/images/350.jpg",
-      "podcast_url": "http://assets.thisamericanlife.co/podcasts/350.mp3"
+      "number": 365,
+      "title": "Another Frightening Show About the Economy",
+      "description": "Alex Blumberg and NPR's Adam Davidson—the two guys who reported...",
+      "date": "2008-10-03",
+      "image_url": "http://assets.thisamericanlife.co/images/365.jpg",
+      "podcast_url": "http://assets.thisamericanlife.co/podcasts/365.mp3"
     },
     {
-      "number": 349,
-      "title": "Valentine's Day 2008",
-      "description": "Veronica Chater's mother wants to go to a resort in Mexico&hellip;",
-      "date": "2008-02-15",
-      "image_url": "http://assets.thisamericanlife.co/images/349.jpg",
-      "podcast_url": "http://assets.thisamericanlife.co/podcasts/349.mp3"
+      "number": 435,
+      "title": "How To Create a Job",
+      "description": "It seems like every politician has a plan for putting people back to work...",
+      "date": "2011-05-13",
+      "image_url": "http://assets.thisamericanlife.co/images/435.jpg",
+      "podcast_url": "http://assets.thisamericanlife.co/podcasts/435.mp3"
     }
+...
 ```
 
 #### [api.thisamericanlife.co/547](http://api.thisamericanlife.co/547)
@@ -48,7 +50,7 @@ Just for funzies I also decided to create a **This American Life** public API. I
   "podcast": {
     "number": 135,
     "title": "Allure of Crime",
-    "description": "We think of crime as a kind of monolithic, menacing presence&hellip;",
+    "description": "We think of crime as a kind of monolithic, menacing presence...",
     "date": "1999-07-23",
     "image_url": "http://assets.thisamericanlife.co/images/135.jpg",
     "podcast_url": "http://assets.thisamericanlife.co/podcasts/135.mp3"
@@ -63,8 +65,9 @@ You get the idea. If you do end up using this API for any reason at all, please 
 I have future plans to implement the following, in no particular order:
 
 * Full coverage RSpec
-* ~~Elasticsearch~~ (2015-04-01)
+* ~~Elasticsearch (Front End)~~ (2015-04-01)
 * Better audio player
 * ~~Slugginate URLS~~ (2015-04-01)
 * Bulk Download Interface
-* ~~GitHub README.md as About Page~~ (2015-04-02)
+* ~~GitHub README.md (remote) as About Page~~ (2015-04-02)
+* ~~Elasticsearch (API)~~ (2015-04-02)
