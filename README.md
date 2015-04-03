@@ -65,7 +65,7 @@ Enjoy! And, if you do end up using this API for any reason at all, please let me
 I have future plans to implement the following, in no particular order:
 
 * Full coverage RSpec
-* Elasticsearch
+* ~~Elasticsearch~~ (2015-04-01)
 * Better audio player
-* ~~Slugginate URLS~~
+* ~~Slugginate URLS~~ (2015-04-01)
 * Bulk Download Interface
