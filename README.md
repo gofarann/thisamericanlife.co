@@ -1,12 +1,12 @@
-### thisamericanlife.co
+## thisamericanlife.co
 
 I really enjoy **This American Life**, but I absolutely hate the podcast subscription service through iTunes. Thankfully, the current TAL podcast can be downloaded from their website for free, but I never remember in time, and then I'm forced to listen through their weird flash player on their non-mobile-friendly website. Ruby to the rescue! I wrote a couple Nokogiri scripts, wired up an S3 bucket, snagged this sick domain, and now I'm good to go whenever I want.
 
 #### http://thisamericanlife.co
 
-### api.thisamericanlife.co
+## api.thisamericanlife.co
 
-Just for funzies I decided to create a **This American Life** public API. It's very simple. At the root it will return the 10 most recent episodes. Given a page number it will return the 10 episodes on that page. Given a specific episode number and it will return just that episode. It can also return a random episode for your listening pleasure.
+Just for funzies I also decided to create a **This American Life** public API. It's very simple. At the root it will return the 10 most recent episodes. Given a page number it will return the 10 episodes on that page. Given a specific episode number and it will return just that episode. It can also return a random episode for your listening pleasure.
 
 #### http://api.thisamericanlife.co
 #### http://api.thisamericanlife.co?page=21
@@ -60,7 +60,7 @@ Just for funzies I decided to create a **This American Life** public API. It's v
 
 Enjoy! And, if you do end up using this API for any reason at all, please let me know.
 
-### Up and Coming
+## Up and Coming
 
 I have future plans to implement the following, in no particular order:
 
