@@ -2,14 +2,14 @@
 
 I really enjoy **This American Life**, but I absolutely hate the podcast subscription service through iTunes. Thankfully, the current TAL podcast can be downloaded from their website for free, but I never remember in time, and then I'm forced to listen through their weird flash player on their non-mobile-friendly website. Ruby to the rescue! I wrote a couple Nokogiri scripts, wired up an S3 bucket, snagged this sick domain, and now I'm good to go whenever I want.
 
-#### http://thisamericanlife.co
+#### [thisamericanlife.co](http://thisamericanlife.co)
 
 ## api.thisamericanlife.co
 
 Just for funzies I also decided to create a **This American Life** public API. It's very simple. At the root it will return the 10 most recent episodes. Given a page number it will return the 10 episodes on that page. Given a specific episode number and it will return just that episode. It can also return a random episode for your listening pleasure.
 
-#### http://api.thisamericanlife.co
-#### http://api.thisamericanlife.co?page=21
+#### [api.thisamericanlife.co](http://api.thisamericanlife.co)
+#### [api.thisamericanlife.co?page=21](http://api.thisamericanlife.co?page=21)
 
 ```json
 {
@@ -42,8 +42,8 @@ Just for funzies I also decided to create a **This American Life** public API. I
 
 &hellip; you get the idea.
 
-#### http://api.thisamericanlife.co/547
-#### http://api.thisamericanlife.co/random
+#### [api.thisamericanlife.co/547](http://api.thisamericanlife.co/547)
+#### [api.thisamericanlife.co/random](http://api.thisamericanlife.co/random)
 
 ```json
 {
@@ -69,3 +69,4 @@ I have future plans to implement the following, in no particular order:
 * Better audio player
 * ~~Slugginate URLS~~ (2015-04-01)
 * Bulk Download Interface
+* ~~GitHub README.md as About Page~~ (2015-04-02)
