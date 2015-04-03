@@ -40,8 +40,6 @@ Just for funzies I also decided to create a **This American Life** public API. I
     }
 ```
 
-&hellip; you get the idea.
-
 #### [api.thisamericanlife.co/547](http://api.thisamericanlife.co/547)
 #### [api.thisamericanlife.co/random](http://api.thisamericanlife.co/random)
 
@@ -58,7 +56,7 @@ Just for funzies I also decided to create a **This American Life** public API. I
 }
 ```
 
-Enjoy! And, if you do end up using this API for any reason at all, please let me know.
+You get the idea. If you do end up using this API for any reason at all, please let me know.
 
 ## Up and Coming
 
