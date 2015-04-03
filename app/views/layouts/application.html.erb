@@ -40,14 +40,17 @@
 			      <%= link_to "IMPORT NEW EPISODE!", import_path, class: "btn btn-primary btn-block" %>
 			    <% end %>
 
-          <form action="<%= search_path %>" method="get">
-            <%= text_field_tag :q, params[:q], class: 'form-control input-lg', placeholder: "search: type and then hit enter" %>
-          </form>
+          <% unless action_name == "about" || params[:random] %>
+            <form action="<%= search_path %>" method="get">
+              <%= text_field_tag :q, params[:q], class: 'form-control input-lg', placeholder: "search: type and then hit enter" %>
+            </form>
+          <% end %>
 
 					<%= yield %>
 
           <div id="footer">
             <ul class="list-inline text-center">
+              <li><%= link_to "about", about_path %></li>
               <li><%= link_to "eliduke.com", "http://eliduke.com", target: "_blank" %> </li>
             </ul>
           </div>

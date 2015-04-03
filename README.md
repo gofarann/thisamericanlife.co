@@ -34,12 +34,12 @@ Just for funzies I also decided to create a **This American Life** public API. I
     {
       "number": 435,
       "title": "How To Create a Job",
-      "description": "It seems like every politician has a plan for putting people back to work...",
+      "description": "It seems like every politician has a plan for putting people...",
       "date": "2011-05-13",
       "image_url": "http://assets.thisamericanlife.co/images/435.jpg",
       "podcast_url": "http://assets.thisamericanlife.co/podcasts/435.mp3"
     }
-...
+    ...
 ```
 
 #### [api.thisamericanlife.co/547](http://api.thisamericanlife.co/547)

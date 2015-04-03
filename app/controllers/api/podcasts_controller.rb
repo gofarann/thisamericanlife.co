@@ -24,4 +24,11 @@ class API::PodcastsController < ApplicationController
     render json: @podcast
   end
 
+  def search
+    response = Podcast.search("#{params[:q]}*")
+    @podcasts = response.records.order(:title).to_a
+    render json: @podcasts
+  end
+
+
 end

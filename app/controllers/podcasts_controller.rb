@@ -11,11 +11,12 @@ class PodcastsController < ApplicationController
   end
 
   def search
-    response = Podcast.search(params[:q])
+    response = Podcast.search("#{params[:q]}*")
     @podcasts = response.records.order(:title).to_a
   end
 
-  def api
+  def about
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, no_intra_emphasis: true, fenced_code_blocks: true, strikethrough: true)
   end
 
   def seed

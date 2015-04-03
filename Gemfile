@@ -13,6 +13,6 @@ gem 'httparty'
 gem 'rails_12factor'
 gem 'active_model_serializers', '~> 0.8.3'
 gem 'pry'
-
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'redcarpet'
