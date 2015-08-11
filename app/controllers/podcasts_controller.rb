@@ -52,22 +52,16 @@ class PodcastsController < ApplicationController
         local_image = local_resource_from_url(image)
         local_copy_of_image = local_image.file
 
-        s3 = AWS::S3.new
-        bucket = s3.buckets["#{ENV['S3_BUCKET_NAME']}"]
-
-        if !bucket.objects["podcasts/#{episode}.mp3"].exists?
-          bucket.objects["podcasts/#{episode}.mp3"].write(:file => local_copy_of_podcast.path, :acl => :public_read)
-        end
-
-        if !bucket.objects["images/#{episode}.jpg"].exists?
-          bucket.objects["images/#{episode}.jpg"].write(:file => local_copy_of_image.path, :acl => :public_read)
-        end
+        Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_podcast.path, key: "podcasts/#{episode}.mp3", acl: 'public-read')
+        Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.mp3", acl: 'public-read')
 
       ensure
+
         local_copy_of_podcast.close
         local_copy_of_podcast.unlink
         local_copy_of_image.close
         local_copy_of_image.unlink
+
       end
 
       Podcast.create!(number: number, title: title, description: description, date: date)
