@@ -41,10 +41,11 @@ class PodcastsController < ApplicationController
       description = doc.css("div.description").text.strip
       date = Date.parse(doc.css("div.date").text).strftime("%F")
 
-      image = doc.css("div.image img").attribute('src').value.insert(0, "http:")
+      image = doc.css("div.image img").attribute('src').value
       podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
 
       begin
+
         local_podcast = local_resource_from_url(podcast)
         local_copy_of_podcast = local_podcast.file
 
@@ -61,6 +62,7 @@ class PodcastsController < ApplicationController
         if !bucket.objects["images/#{episode}.jpg"].exists?
           bucket.objects["images/#{episode}.jpg"].write(:file => local_copy_of_image.path, :acl => :public_read)
         end
+
       ensure
         local_copy_of_podcast.close
         local_copy_of_podcast.unlink
@@ -80,12 +82,12 @@ class PodcastsController < ApplicationController
 
   private
 
-    def set_podcast
-      @podcast = Podcast.find_by_number(params[:id])
-    end
+  def set_podcast
+    @podcast = Podcast.find_by_number(params[:id])
+  end
 
-    def podcast_params
-      params.require(:podcast).permit(:number, :title, :description, :date)
-    end
+  def podcast_params
+    params.require(:podcast).permit(:number, :title, :description, :date)
+  end
 
 end
