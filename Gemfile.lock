@@ -45,6 +45,8 @@ GEM
       jmespath (~> 1.0)
     aws-sdk-resources (2.1.13)
       aws-sdk-core (= 2.1.13)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -57,6 +59,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    debug_inspector (0.0.2)
     elasticsearch (1.0.12)
       elasticsearch-api (= 1.0.12)
       elasticsearch-transport (= 1.0.12)
@@ -108,6 +111,12 @@ GEM
     pry-byebug (3.2.0)
       byebug (~> 5.0)
       pry (~> 0.10)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     puma (2.12.3)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -169,7 +178,10 @@ DEPENDENCIES
   kaminari
   nokogiri
   pg
+  pry
   pry-byebug
+  pry-remote
+  pry-stack_explorer
   puma
   rails
   rails_12factor

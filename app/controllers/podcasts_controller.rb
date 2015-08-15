@@ -53,7 +53,7 @@ class PodcastsController < ApplicationController
         local_copy_of_image = local_image.file
 
         Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_podcast.path, key: "podcasts/#{episode}.mp3", acl: 'public-read')
-        Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.mp3", acl: 'public-read')
+        Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.jpg", acl: 'public-read')
 
       ensure
 
