@@ -5,11 +5,11 @@ class API::PodcastsController < ApplicationController
 
     newest = Podcast.last.number
 
-    start = newest - (page * 10)
-    stop = start + 9
+    start = page == 1 ? newest : newest - ((page - 1) * 10)
+    stop = start - 9
     podcasts = (start..stop).to_a
 
-    @podcasts = Podcast.where(number: podcasts).order(:number).reverse
+    @podcasts = Podcast.where(number: podcasts).order(:number)
     render json: @podcasts
   end
 
