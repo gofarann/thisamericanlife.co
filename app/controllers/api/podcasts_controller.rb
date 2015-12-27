@@ -7,9 +7,9 @@ class API::PodcastsController < ApplicationController
 
     start = page == 1 ? newest : newest - ((page - 1) * 10)
     stop = start - 9
-    podcasts = (start..stop).to_a
+    podcasts = (stop..start).to_a
 
-    @podcasts = Podcast.where(number: podcasts).order(:number)
+    @podcasts = Podcast.where(number: podcasts).order(:number).reverse
     render json: @podcasts
   end
 
