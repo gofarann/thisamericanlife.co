@@ -41,28 +41,28 @@ class PodcastsController < ApplicationController
       description = doc.css("div.description").text.strip
       date = Date.parse(doc.css("div.date").text).strftime("%F")
 
-      image = doc.css("div.image img").attribute('src').value
-      podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
+      # image = "http:" + doc.css("div.image img").attribute('src').value
+      # podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
 
-      begin
-
-        local_podcast = local_resource_from_url(podcast)
-        local_copy_of_podcast = local_podcast.file
-
-        local_image = local_resource_from_url(image)
-        local_copy_of_image = local_image.file
-
-        Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_podcast.path, key: "podcasts/#{episode}.mp3", acl: 'public-read')
-        Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.jpg", acl: 'public-read')
-
-      ensure
-
-        local_copy_of_podcast.close
-        local_copy_of_podcast.unlink
-        local_copy_of_image.close
-        local_copy_of_image.unlink
-
-      end
+      # begin
+      #
+      #   local_podcast = local_resource_from_url(podcast)
+      #   local_copy_of_podcast = local_podcast.file
+      #
+      #   local_image = local_resource_from_url(image)
+      #   local_copy_of_image = local_image.file
+      #
+      #   Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_podcast.path, key: "podcasts/#{episode}.mp3", acl: 'public-read')
+      #   Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.jpg", acl: 'public-read')
+      #
+      # ensure
+      #
+      #   local_copy_of_podcast.close
+      #   local_copy_of_podcast.unlink
+      #   local_copy_of_image.close
+      #   local_copy_of_image.unlink
+      #
+      # end
 
       Podcast.create!(number: number, title: title, description: description, date: date)
 
