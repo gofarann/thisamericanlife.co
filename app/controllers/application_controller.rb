@@ -16,9 +16,13 @@ class ApplicationController < ActionController::Base
 
   def new_episode?
     last = Podcast.last.number
-    return false unless this_week > last
-    return false unless new_podcast_exists?
-    return true
+    if this_week
+      return false unless this_week > last
+      return false unless new_podcast_exists?
+      return true
+    else
+      return false
+    end
   end
 
   helper_method :new_episode?, :this_week
