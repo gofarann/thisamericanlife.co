@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def this_week
-    Nokogiri::HTML(open("http://www.thisamericanlife.org")).css("div#content").css("div.block-content").css("div.this-week").css("h3").css("a").attribute("href").text.split("/")[3].to_i
+    Nokogiri::HTML(open("https://www.thisamericanlife.org")).css("div#content").css("div.block-content").css("div.this-week").css("h3").css("a").attribute("href").text.split("/")[3].to_i
+  rescue
+    nil
   end
 
   def new_podcast_exists?
