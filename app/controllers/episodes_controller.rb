@@ -1,18 +1,18 @@
-class PodcastsController < ApplicationController
-  before_action :set_podcast, only: [:show, :edit, :update, :destroy]
+class EpisodesController < ApplicationController
+  before_action :set_episode, only: [:show, :edit, :update, :destroy]
 
   def index
-    @podcasts = Podcast.order("number DESC").page params[:page]
-    @random_podcast = Podcast.find(rand(1..Podcast.last.number))
+    @episodes = Episode.order("number DESC").page params[:page]
+    @random_episode = Episode.find(rand(1..Episode.last.number))
   end
 
   def show
-    @random_podcast = Podcast.find(rand(1..Podcast.last.number))
+    @random_episode = Episode.find(rand(1..Episode.last.number))
   end
 
   def search
-    response = Podcast.search("#{params[:q]}*")
-    @podcasts = response.records.order(:title).to_a
+    response = Episode.search("#{params[:q]}*")
+    @episodes = response.records.order(:title).to_a
   end
 
   def about
@@ -20,7 +20,7 @@ class PodcastsController < ApplicationController
   end
 
   def seed
-    @podcasts = Podcast.order(:number).last(50)
+    @episodes = Episode.order(:number).last(50)
     render layout: false
   end
 
@@ -29,7 +29,6 @@ class PodcastsController < ApplicationController
   end
 
   def import
-
     # if new_episode?
     #
     #   episode = this_week
@@ -90,17 +89,16 @@ class PodcastsController < ApplicationController
     # else
     #   redirect_to root_path, notice: "No New Episodes. :("
     # end
-
   end
 
   private
 
-  def set_podcast
-    @podcast = Podcast.find_by_number(params[:id])
+  def set_episode
+    @episode = Episode.find_by_number(params[:id])
   end
 
-  def podcast_params
-    params.require(:podcast).permit(:number, :title, :description, :date)
+  def episode_params
+    params.require(:episode).permit(:number, :title, :description, :date)
   end
 
 end

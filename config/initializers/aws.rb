@@ -1,4 +1,4 @@
 Aws.config.update({
   region: 'us-east-1',
-  credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
+  credentials: Aws::Credentials.new("AKIAISOMFH3PWWA32EFA", "umMt5VUYxR7PBMYtYDdG6JovAzom4+3WX4PKTH4x")
 })

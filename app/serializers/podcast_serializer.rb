@@ -1,4 +1,4 @@
-class PodcastSerializer < ActiveModel::Serializer
+class EpisodeSerializer < ActiveModel::Serializer
   attributes :number, :title, :description, :date, :image_url, :podcast_url
 
   def image_url

@@ -14,7 +14,7 @@ Just for funzies I also decided to create a **This American Life** public API. I
 
 ```json
 {
-  "podcasts": [
+  "episodes": [
     {
       "number": 366,
       "title": "A Better Mousetrap 2008",
@@ -47,7 +47,7 @@ Just for funzies I also decided to create a **This American Life** public API. I
 
 ```json
 {
-  "podcast": {
+  "episode": {
     "number": 135,
     "title": "Allure of Crime",
     "description": "We think of crime as a kind of monolithic, menacing presence...",

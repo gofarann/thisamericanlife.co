@@ -1,3 +1,3 @@
-<% @podcasts.each do |podcast| %>
+<% @episodes.each do |podcast| %>
   { number: <%= podcast.number %>, title: %^<%= podcast.title %>^, description: %^<%= podcast.description %>^, date: %^<%= podcast.date %>^ },<br/>
 <% end %>

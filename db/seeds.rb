@@ -617,6 +617,6 @@
   { number: 616, title: %^I Am Not A Pirate^, description: %^To be, or not to be a pirate? This week, that is the question. Hold fast, mateys! We have stories about both historical and modern-day swashbucklers who loot, pillage, and question their choices.^, date: %^2017-05-05^ },
   { number: 617, title: %^Fermi’s Paradox^, description: %^Three people grapple with the question, “Are we alone?”^, date: %^2017-05-19^ },
   { number: 618, title: %^Mr. Lie Detector^, description: %^A polygraph operator and his strange journey. And other stories.^, date: %^2017-06-09^ }
-].each do |podcast|
-  Podcast.create!(podcast)
+].each do |episode|
+  Episode.create!(episode)
 end

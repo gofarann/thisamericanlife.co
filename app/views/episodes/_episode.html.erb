@@ -1,0 +1,17 @@
+<% if params[:random] %>
+  <%= link_to "RANDOM EPISODE", "#{title_path(random_episode)}?random=true", class: "btn btn-primary btn-block" %>
+<% end %>
+<div class="episode row">
+	<div class="col-sm-6">
+		<h3><%= link_to "#{episode.number}: #{episode.title}", title_path(episode) %></h3>
+		<h4><%= episode.date.strftime("%B %-d, %Y") %></h4>
+		<p><%= episode.description %></p>
+	</div>
+	<div class="col-sm-6">
+		<img src="http://<%= ENV['S3_BUCKET_NAME'] %>/images/<%= "%03d" % episode.number %>.jpg">
+    <% unless params[:q] %>
+      <audio src="http://<%= ENV['S3_BUCKET_NAME'] %>/podcasts/<%= "%03d" % episode.number %>.mp3" controls></audio>
+    <% end %>
+    <%= link_to "CLICK HERE FOR THE MP3", "http://#{ENV['S3_BUCKET_NAME']}/podcasts/#{'%03d' % episode.number}.mp3", class: "btn btn-danger btn-block" %>
+	</div>
+</div>

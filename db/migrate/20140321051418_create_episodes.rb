@@ -1,6 +1,6 @@
-class CreatePodcasts < ActiveRecord::Migration
+class CreateEpisodes < ActiveRecord::Migration
   def change
-    create_table :podcasts do |t|
+    create_table :episodes do |t|
       t.integer :number
       t.string :title
       t.text :description
