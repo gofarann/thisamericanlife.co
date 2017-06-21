@@ -30,47 +30,66 @@ class PodcastsController < ApplicationController
 
   def import
 
-    if new_episode?
-
-      episode = this_week
-
-      doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives/episode/#{episode}")).css("div#content")
-
-      number = doc.css("h1.node-title").text.split(":").first.to_i
-      title = doc.css("h1.node-title").text.split(":").last.strip
-      description = doc.css("div.description").text.strip
-      date = Date.parse(doc.css("div.date").text).strftime("%F")
-
-      # image = "http:" + doc.css("div.image img").attribute('src').value
-      # podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
-
-      # begin
-      #
-      #   local_podcast = local_resource_from_url(podcast)
-      #   local_copy_of_podcast = local_podcast.file
-      #
-      #   local_image = local_resource_from_url(image)
-      #   local_copy_of_image = local_image.file
-      #
-      #   Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_podcast.path, key: "podcasts/#{episode}.mp3", acl: 'public-read')
-      #   Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.jpg", acl: 'public-read')
-      #
-      # ensure
-      #
-      #   local_copy_of_podcast.close
-      #   local_copy_of_podcast.unlink
-      #   local_copy_of_image.close
-      #   local_copy_of_image.unlink
-      #
-      # end
-
-      Podcast.create!(number: number, title: title, description: description, date: date)
-
-      redirect_to root_path, notice: "New Episode Imported! :)"
-
-    else
-      redirect_to root_path, notice: "No New Episodes. :("
-    end
+    # if new_episode?
+    #
+    #   episode = this_week
+    #
+    #   doc = Nokogiri::HTML(open("http://www.thisamericanlife.org/radio-archives/episode/#{episode}"))
+    #
+    #   content = doc.css("div#content")
+    #   number = content.css("h1.node-title").text.split(":").first.to_i
+    #   title = content.css("h1.node-title").text.split(":").last.strip
+    #   description = content.css("div.description").text.strip
+    #   date = Date.parse(content.css("div.date").text).strftime("%F")
+    #
+    #   # episode_acts = doc.css("ul#episode-acts")
+    #   # acts_string = ""
+    #   # doc.css("div.act-body > text()").first.text.gsub("\u2028", "").strip
+    #   #
+    #   # tags = doc.css("div.act-body").first.css("span.tags")
+    #   # tags_string = "Tags: "
+    #   # tags.each do |tag|
+    #   #   tags_string << tag.text.strip
+    #   #   tags_string << ", " unless tag.equal?(tags.last)
+    #   # end
+    #   #
+    #   # contributors = doc.css("div.act-body").first.css("ul.act-contributors li")
+    #   # contrtibutors_string = "Contributor: "
+    #   # contrtibutors.each do |contrtibutor|
+    #   #   contrtibutors_string << contrtibutor.text.strip
+    #   #   contrtibutors_string << ", " unless contrtibutor.equal?(contrtibutors.last)
+    #   # end
+    #
+    #   # image = "http:" + doc.css("div.image img").attribute('src').value
+    #   # podcast = "http://podcast.thisamericanlife.org/podcast/#{episode}.mp3"
+    #
+    #   # begin
+    #   #
+    #   #   local_podcast = local_resource_from_url(podcast)
+    #   #   local_copy_of_podcast = local_podcast.file
+    #   #
+    #   #   local_image = local_resource_from_url(image)
+    #   #   local_copy_of_image = local_image.file
+    #   #
+    #   #   Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_podcast.path, key: "podcasts/#{episode}.mp3", acl: 'public-read')
+    #   #   Aws::S3::Client.new.put_object(bucket: ENV['S3_BUCKET_NAME'], body: local_copy_of_image.path, key: "images/#{episode}.jpg", acl: 'public-read')
+    #   #
+    #   # ensure
+    #   #
+    #   #   local_copy_of_podcast.close
+    #   #   local_copy_of_podcast.unlink
+    #   #   local_copy_of_image.close
+    #   #   local_copy_of_image.unlink
+    #   #
+    #   # end
+    #
+    #   Podcast.create!(number: number, title: title, description: description, date: date)
+    #
+    #   redirect_to root_path, notice: "New Episode Imported! :)"
+    #
+    # else
+    #   redirect_to root_path, notice: "No New Episodes. :("
+    # end
 
   end
 

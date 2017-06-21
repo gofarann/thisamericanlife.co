@@ -1,0 +1,4 @@
+<%= form_tag('/admin/episodes') do %>
+  <%= text_field_tag :number, params[:number], class: 'form-control input-lg', placeholder: "episode number" %>
+  <%= submit_tag 'Import', class: "btn btn-primary btn-block" %>
+<% end -%>

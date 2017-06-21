@@ -17,4 +17,8 @@ Thisamericanlife::Application.routes.draw do
   get '/search' => 'podcasts#search', as: :search
   get '/:id' => 'podcasts#show', as: :title
 
+  namespace :admin do
+    resources :episodes
+  end
+
 end
