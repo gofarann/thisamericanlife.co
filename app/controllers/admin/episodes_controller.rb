@@ -19,7 +19,7 @@ class Admin::EpisodesController < ApplicationController
           date = Date.parse(content.css("div.date").text).strftime("%F")
         end
 
-        new_episode = Podcast.new(number: number, title: title, description: description, date: date)
+        new_episode = Episode.new(number: number, title: title, description: description, date: date)
 
         if new_episode.save
           redirect_to admin_episodes_path, notice: "New Episode Imported! :)"

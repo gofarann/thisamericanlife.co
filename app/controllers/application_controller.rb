@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def new_episode?
-    last = Podcast.last.number
+    last = Episode.last.number
     if this_week
       return false unless this_week > last
       return false unless new_podcast_exists?

@@ -82,7 +82,7 @@ class EpisodesController < ApplicationController
     #   #
     #   # end
     #
-    #   Podcast.create!(number: number, title: title, description: description, date: date)
+    #   Episode.create!(number: number, title: title, description: description, date: date)
     #
     #   redirect_to root_path, notice: "New Episode Imported! :)"
     #
